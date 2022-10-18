@@ -1,4 +1,0 @@
-install:
-    @cargo build --release
-    sudo cp conf/pam-pass-auth /etc/pam.d/
-    sudo cp ../../target/release/pam_pass_auth.so /lib/security/pam_pass_auth.so

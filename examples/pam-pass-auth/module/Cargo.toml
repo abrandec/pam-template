@@ -8,4 +8,4 @@ name = "pam_pass_auth"
 crate-type = ["cdylib"]
 
 [dependencies]
-pam-bindings = { path = "../../pam/" }
+pam-bindings = { path = "../../../pam/" }
