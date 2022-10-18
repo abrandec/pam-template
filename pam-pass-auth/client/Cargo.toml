@@ -1,0 +1,8 @@
+[package]
+name = "pam-pass-cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pam = "0.7.0"
+users = "0.11.0"

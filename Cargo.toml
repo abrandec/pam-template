@@ -1,0 +1,2 @@
+[workspace]
+members = ["pam", "pam-pass-auth/module", "pam-pass-auth/client"]

@@ -1,0 +1,11 @@
+[package]
+name = "pam-pass-auth"
+version = "0.1.0"
+authors = ["Abran DeCarlo <abrandecarlo@protonmail.com>"]
+
+[lib]
+name = "pam_pass_auth"
+crate-type = ["cdylib"]
+
+[dependencies]
+pam-bindings = { path = "../../pam/" }
