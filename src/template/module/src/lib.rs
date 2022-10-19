@@ -33,8 +33,8 @@ impl PamHooks for PamTemplate {
         let username = pam_try!(pamh.get_user(None));
         // attempt to check if username exists
         let user = match get_user_by_name(&username) {
-           Some(user) => user,
-           None => return PamResultCode::PAM_USER_UNKNOWN,
+            Some(user) => user,
+            None => return PamResultCode::PAM_USER_UNKNOWN,
         };
 
         println!("username: {:?}", username);
@@ -50,19 +50,19 @@ impl PamHooks for PamTemplate {
         println!("password: {:?}", password);
         // password validation zone
         if password == "test_password" {
-        // we now try to spawn `/bin/bash` as this user
-        // note that setting the uid/gid is likely to fail if this program is not already run as the
-        // proper user or as root
-        let error = Command::new("/bin/bash")
-            .uid(user.uid())
-            .gid(user.primary_group_id())
-            .exec();
-        // if exec() returned, this means there was an error:
-        println!("Error spawning bash: {:?}", error);
-        PamResultCode::PAM_SUCCESS
+            // we now try to spawn `/bin/bash` as this user
+            // note that setting the uid/gid is likely to fail if this program is not already run as the
+            // proper user or as root
+            let error = Command::new("/bin/bash")
+                .uid(user.uid())
+                .gid(user.primary_group_id())
+                .exec();
+            // if exec() returned, this means there was an error:
+            println!("Error spawning bash: {:?}", error);
+            PamResultCode::PAM_SUCCESS
         } else {
-        // incorrect password
-        PamResultCode::PAM_AUTH_ERR
+            // incorrect password
+            PamResultCode::PAM_AUTH_ERR
         }
     }
 
