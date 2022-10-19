@@ -37,25 +37,22 @@ dependencies = [
 [[package]]
 name = "pam-bindings"
 version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95c337e922acb6ab9c3ddd1016fed13957a5bf14f51b6caa293ddc8dd47660ca"
 dependencies = [
  "libc",
 ]
 
 [[package]]
-name = "pam-client-template"
-version = "0.0.1"
-dependencies = [
- "pam",
- "users 0.11.0",
-]
-
-[[package]]
-name = "pam-module-template"
+name = "pam-pass-auth"
 version = "0.1.0"
 dependencies = [
  "pam-bindings",
+]
+
+[[package]]
+name = "pam-pass-cli"
+version = "0.1.0"
+dependencies = [
+ "pam",
  "users 0.11.0",
 ]
 
