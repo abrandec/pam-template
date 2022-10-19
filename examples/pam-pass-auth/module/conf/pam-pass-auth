@@ -1,2 +1,0 @@
-auth required pam_pass_auth.so
-account required pam_pass_auth.so

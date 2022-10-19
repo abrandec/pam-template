@@ -1,11 +1,12 @@
 [package]
-name = "pam-pass-auth"
+name = "pam-module-template"
 version = "0.1.0"
 authors = ["Abran DeCarlo <abrandecarlo@protonmail.com>"]
 
 [lib]
-name = "pam_pass_auth"
+name = "pam_template"
 crate-type = ["cdylib"]
 
 [dependencies]
-pam-bindings = { path = "../../../pam/" }
+pam-bindings = "0.1.1"
+users = "0.11.0"
