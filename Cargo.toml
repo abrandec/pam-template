@@ -1,2 +1,2 @@
 [workspace]
-members = ["pam", "examples/pam-pass-auth/module", "examples/pam-pass-auth/client"]
+members = ["src/template/module", "src/template/client"]

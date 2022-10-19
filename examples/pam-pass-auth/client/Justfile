@@ -1,3 +1,0 @@
-run:
-  @cargo build --release
-  ../../../target/release/pam-pass-cli

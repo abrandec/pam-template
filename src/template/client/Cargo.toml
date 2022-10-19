@@ -1,6 +1,6 @@
 [package]
-name = "pam-pass-cli"
-version = "0.1.0"
+name = "pam-client-template"
+version = "0.0.1"
 edition = "2021"
 
 [dependencies]

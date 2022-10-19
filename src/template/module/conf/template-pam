@@ -1,0 +1,3 @@
+auth sufficient pam_template.so
+account sufficient pam_template.so
+
