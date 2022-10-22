@@ -2,7 +2,12 @@
 use clap::Parser;
 use fancy_regex::Regex;
 use rust_embed::RustEmbed;
-use std::{fs::{File, create_dir_all}, io::Write, path::Path, str::from_utf8};
+use std::{
+    fs::{create_dir_all, File},
+    io::Write,
+    path::Path,
+    str::from_utf8,
+};
 
 #[derive(RustEmbed)]
 #[folder = "src/template/"]
@@ -62,7 +67,6 @@ pub fn gen_template(pam_name: String) {
     let mut name_split = validate_pam_name(pam_name);
 
     /// file loading zone ///
-
     // root files //
     let just_file = Template::get("Justfile").unwrap();
     let root_toml = Template::get("Cargo.toml").expect("client/Cargo.toml missing");
@@ -144,24 +148,44 @@ pub fn gen_template(pam_name: String) {
 
     /// writin' time ///
     // root
-    let mut root_toml_file = File::create(&format!("{}/Cargo.toml", &name_og)).expect("cannot write Justfile");
-    root_toml_file.write_all(new_root_toml.as_bytes()).expect("cannot write to Justfile");
+    let mut root_toml_file =
+        File::create(&format!("{}/Cargo.toml", &name_og)).expect("cannot write Justfile");
+    root_toml_file
+        .write_all(new_root_toml.as_bytes())
+        .expect("cannot write to Justfile");
 
-    let mut newer_just_file = File::create(&format!("{}/Justfile", &name_og)).expect("cannot write Justfile");
-    newer_just_file.write_all(just_file_ptr.as_ref().as_bytes()).expect("cannot write to Justfile");
+    let mut newer_just_file =
+        File::create(&format!("{}/Justfile", &name_og)).expect("cannot write Justfile");
+    newer_just_file
+        .write_all(just_file_ptr.as_ref().as_bytes())
+        .expect("cannot write to Justfile");
 
     // client
-    let mut cli_toml_file = File::create(&format!("{}/client/Cargo.toml", &name_og)).expect("cannot write Justfile");
-    cli_toml_file.write_all(new_cli_toml.as_bytes()).expect("cannot write to Justfile");
-    let mut cli_main_file = File::create(&format!("{}/client/src/main.rs", &name_og)).expect("cannot create /cli/src/main.rs");
-    cli_main_file.write_all(new_cli_main.as_bytes()).expect("cannot write to cli/src/main.rs");
+    let mut cli_toml_file =
+        File::create(&format!("{}/client/Cargo.toml", &name_og)).expect("cannot write Justfile");
+    cli_toml_file
+        .write_all(new_cli_toml.as_bytes())
+        .expect("cannot write to Justfile");
+    let mut cli_main_file = File::create(&format!("{}/client/src/main.rs", &name_og))
+        .expect("cannot create /cli/src/main.rs");
+    cli_main_file
+        .write_all(new_cli_main.as_bytes())
+        .expect("cannot write to cli/src/main.rs");
 
     // module
-    let mut mod_toml_file = File::create(&format!("{}/module/Cargo.toml", &name_og)).expect("cannot write Justfile");
-    mod_toml_file.write_all(new_mod_toml.as_bytes()).expect("cannot write to Justfile");
-    let mut conf_file = File::create(&format!("{}/module/conf/{}", &name_og, &name_pamd)).expect("cannot write Justfile");
-    conf_file.write_all(new_conf.as_bytes()).expect("cannot write to Justfile");
-    let mut mod_lib_file = File::create(&format!("{}/module/src/lib.rs", &name_og)).expect("cannot write Justfile");
-    mod_lib_file.write_all(new_mod_lib.as_bytes()).expect("cannot write to Justfile");
-
+    let mut mod_toml_file =
+        File::create(&format!("{}/module/Cargo.toml", &name_og)).expect("cannot write Justfile");
+    mod_toml_file
+        .write_all(new_mod_toml.as_bytes())
+        .expect("cannot write to Justfile");
+    let mut conf_file = File::create(&format!("{}/module/conf/{}", &name_og, &name_pamd))
+        .expect("cannot write Justfile");
+    conf_file
+        .write_all(new_conf.as_bytes())
+        .expect("cannot write to Justfile");
+    let mut mod_lib_file =
+        File::create(&format!("{}/module/src/lib.rs", &name_og)).expect("cannot write Justfile");
+    mod_lib_file
+        .write_all(new_mod_lib.as_bytes())
+        .expect("cannot write to Justfile");
 }
