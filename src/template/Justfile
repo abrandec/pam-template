@@ -1,12 +1,28 @@
+###########################################
+# Variables                               #
+# directory not the same for all distros! #
+###########################################
+pam_module_dir := '/lib/x86_64-linux-gnu/security'
+pamd_file := '/etc/pam.d/template-pam'
+
+############
+# Commands #
+############
+
 run: module client
 
+#########
 module:
   @cargo build --release --manifest-path=module/Cargo.toml
-  sudo cp module/conf/template-pam /etc/pam.d/template-pam
-  sudo cp ../../target/release/libpam_template.so \
-  /lib/x86_64-linux-gnu/security/pam_template.so
-  sudo chmod 755 /lib/x86_64-linux-gnu/security/pam_template.so
+  sudo cp module/conf/template-pam {{pamd_file}}
+  sudo cp ./target/release/libpam_template.so \
+  {{pam_module_dir}}/pam_template.so
+  sudo chmod 755 {{pam_module_dir}}/pam_template.so
 
 client:
   @cargo build --release --manifest-path=client/Cargo.toml
-  ../../target/release/pam-client-template
+  ./target/release/pam-client-template
+#########
+
+clean:
+  sudo rm {{pamd_file}} {{pam_module_dir}}/pam_template.so

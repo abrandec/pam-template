@@ -1,6 +1,3 @@
-extern crate pam;
-extern crate users;
-
 use pam::{
     constants::{PamFlag, PamResultCode, PAM_PROMPT_ECHO_OFF},
     conv::Conv,

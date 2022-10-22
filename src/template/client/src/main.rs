@@ -1,7 +1,7 @@
 use pam::Authenticator;
 
 pub fn main() {
-    let service = "template-pamrs";
+    let service = "template-pam";
     let user = "testenv";
     let passwd = "test_password";
     let mut auth = Authenticator::with_password(service).unwrap();
