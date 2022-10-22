@@ -1,5 +1,5 @@
-# pam-rust-template
-Custom PAM authentication made easy!
+# pam-template
+PAM development made easy!
 
 ## Prerequisites
 [just](https://github.com/casey/just)
@@ -12,7 +12,8 @@ sudo apt-get install -y build-essential libpam0g-dev
 ## Installing
 to install from source, run:
 ```
-./install.sh
+git clone https://github.com/abrandec/pam-template
+just install
 ```
 
 ## Using

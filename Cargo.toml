@@ -1,5 +1,5 @@
 [package]
-name = "pam-rust-template"
+name = "pam-template"
 version = "0.0.1"
 edition = "2021"
 authors = ["Abran DeCarlo <abrandecarlo@protonmail.com>"]
