@@ -47,15 +47,17 @@ impl PamHooks for PamTemplate {
         println!("password: {:?}", password);
         // password validation zone
         if password == "test_password" {
+            println!("PAM_SUCCESS");
             // we now try to spawn `/bin/bash` as this user
             // note that setting the uid/gid is likely to fail if this program is not already run as the
             // proper user or as root
-            let error = Command::new("/bin/bash")
+            /* let error = Command::new("/bin/bash")
                 .uid(user.uid())
                 .gid(user.primary_group_id())
                 .exec();
             // if exec() returned, this means there was an error:
             println!("Error spawning bash: {:?}", error);
+            */
             PamResultCode::PAM_SUCCESS
         } else {
             // incorrect password
