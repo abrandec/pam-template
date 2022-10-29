@@ -1,5 +1,5 @@
 # pam-template
-PAM development made easy!
+PAM development in Rust made easy!
 
 ## Prerequisites
 [just](https://github.com/casey/just)
