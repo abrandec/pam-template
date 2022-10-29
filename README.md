@@ -23,7 +23,7 @@ pam-template create project-name
 ```
 > **Warning**
 > 
-> project names must contain a '-' inbetween two charaters from the English alphabet.  All other chars are prohibited.
+> Project names must contain a '-' inbetween two charaters from the English alphabet.  All other chars are prohibited.
 
 ## Installing pam module
 go to the pam project's directory and run:
