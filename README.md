@@ -21,16 +21,18 @@ creating a PAM project:
 ```
 pam-template create project-name
 ```
-**Warning**
-project names must contain a '-' inbetween two charaters from the English alphabet.  All other chars are prohibited.
+> **Warning**
+> 
+> project names must contain a '-' inbetween two charaters from the English alphabet.  All other chars are prohibited.
 
 ## Installing pam module
 go to the pam project's directory and run:
 ```
 just run
 ```
-**Warning**
-In the Justfile in your project, assert that the pam_module_dir variable matches your system's path  or installation will fail.
+> **Warning**
+> 
+> In the Justfile in your project, assert that the pam_module_dir variable matches your system's path  or installation will fail.
 
 ## License
 
